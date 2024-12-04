@@ -1,17 +1,14 @@
-import io
 import sys
 
-from PyQt6 import uic
 from PyQt6.QtGui import QPainter, QColor
-from PyQt6.QtWidgets import QWidget, QApplication
+from PyQt6.QtWidgets import QApplication
 from random import randint
+from interface import MyWidget
 
 
-class Widget(QWidget):
+class Widget(MyWidget):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
-        self.setFixedSize(615, 500)
         self.button.clicked.connect(self.paint)
         self.paint_ = False
 
@@ -28,9 +25,9 @@ class Widget(QWidget):
         self.update()
 
     def draw_ellipse(self, qp):
-        qp.setBrush(QColor(255, 255, 0))
         number = randint(1, 7)
         for _ in range(number):
+            qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
             radius = randint(20, 500)
             qp.drawEllipse(randint(-50, 450), randint(-50, 450), radius, radius)
 

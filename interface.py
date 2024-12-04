@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+import io
+
+from PyQt6 import uic
+from PyQt6.QtWidgets import QWidget
+
+design = '''<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
@@ -29,4 +34,12 @@
  </widget>
  <resources/>
  <connections/>
-</ui>
+</ui>'''
+
+
+class MyWidget(QWidget):
+    def __init__(self):
+        super().__init__()
+        f = io.StringIO(design)
+        uic.loadUi(f, self)
+        self.setFixedSize(615, 500)
